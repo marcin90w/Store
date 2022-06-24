@@ -9,6 +9,12 @@ public class Article {
     public Article() {
     }
 
+    public Article(String articleName, Double price, ArticleCategory articleCategory) {
+        this.articleName = articleName;
+        this.price = price;
+        this.articleCategory = articleCategory;
+    }
+
     public String getArticleName() {
         return articleName;
     }

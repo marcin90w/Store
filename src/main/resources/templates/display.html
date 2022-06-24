@@ -6,5 +6,12 @@
 </head>
 <body>
 
+<ul>
+    <li th:each="article: ${articles}" th:text="${article.articleName} + ' - cena: ' + ${article.price}"></li>
+</ul>
+
+
+
+<a class="btn btn-primary" href="/" role="button">Powrót do strony głównej</a>
 </body>
 </html>
