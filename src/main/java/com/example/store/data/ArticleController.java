@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicReference;
 
 @Controller
 public class ArticleController {
@@ -17,17 +18,22 @@ public class ArticleController {
         this.articleRepository = articleRepository;
     }
 
-    @GetMapping("/category")
-    public String mainPage(Model model, @RequestParam(required = false, name="category") ArticleCategory articleCategory) {
+    @GetMapping("/filters/")
+    public String displayArticles(Model model, @RequestParam(required = false, name="category") ArticleCategory articleCategory) {
         Set<Article> articles;
+
         if (articleCategory != null) {
             articles = articleRepository.findByCategory(articleCategory);
         } else {
             articles = articleRepository.findAll();
         }
         model.addAttribute("articles", articles);
-        return "display";
+        AtomicReference<Double> sum = new AtomicReference<>((double) 0);
+        articles.stream().map(Article::getPrice).forEach(p -> sum.updateAndGet(v -> v + p));
+        model.addAttribute("pricesSum", sum);
+        return "filters/display";
     }
+
 
     @GetMapping("/dodaj")
     public String addForm(Model model) {

@@ -7,7 +7,8 @@
 <body>
 
 <ul>
-    <li th:each="article: ${articles}" th:text="${article.articleName} + ' - cena: ' + ${article.price}"></li>
+    <li th:each="article: ${articles}" th:text="${article.articleName} + ' - cena: ' + ${article.price} + ' zł'"></li>
+    <li th:text="'Koszt wszystkich artykułów: ' + ${pricesSum} + ' zł'">ostateczna cena</li>
 </ul>
 
 

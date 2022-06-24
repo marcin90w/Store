@@ -28,7 +28,9 @@ public class ArticleRepository {
     }
 
     public Set<Article> findByCategory(ArticleCategory category) {
-        return articleSet.stream().filter(article -> category.equals(article.getArticleCategory())).collect(Collectors.toSet());
+        return articleSet.stream()
+                .filter(article -> category.equals(article.getArticleCategory()))
+                .collect(Collectors.toSet());
     }
 
     public void addArticle(Article article) {

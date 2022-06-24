@@ -23,19 +23,19 @@ public class Article {
         this.articleName = articleName;
     }
 
-    public Double getPrice() {
-        return price;
-    }
-
     public void setPrice(Double price) {
         this.price = price;
     }
 
-    public ArticleCategory getArticleCategory() {
-        return articleCategory;
-    }
-
     public void setArticleCategory(ArticleCategory articleCategory) {
         this.articleCategory = articleCategory;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public ArticleCategory getArticleCategory() {
+        return articleCategory;
     }
 }
